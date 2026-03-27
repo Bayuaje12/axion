@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 210 40% 98%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 215 16% 47%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Custom Axon tokens */
+    --axon-blue: 217 91% 60%;
+    --axon-green: 160 84% 39%;
+    --axon-surface: 210 40% 98%;
+    --axon-text: 215 16% 47%;
+    --axon-heading: 222 47% 11%;
+    --axon-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    --axon-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --axon-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .axon-card {
+    @apply bg-card rounded-xl p-6;
+    box-shadow: var(--axon-shadow-md);
+  }
+
+  .axon-card-hover {
+    @apply axon-card transition-shadow duration-200;
+  }
+
+  .axon-card-hover:hover {
+    box-shadow: var(--axon-shadow-lg);
+  }
+
+  .axon-heading {
+    @apply font-bold tracking-tight;
+    color: hsl(var(--axon-heading));
+  }
+
+  .axon-text {
+    color: hsl(var(--axon-text));
+  }
+}
+
+/* Splash screen animations */
+@keyframes axon-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+
+@keyframes axon-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes axon-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes axon-battery-fill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.animate-axon-pulse {
+  animation: axon-pulse 2s ease-in-out infinite;
+}
+
+.animate-axon-fade-in {
+  animation: axon-fade-in 0.6s ease-out forwards;
+}
+
+.animate-axon-fade-out {
+  animation: axon-fade-out 0.5s ease-out forwards;
+}
